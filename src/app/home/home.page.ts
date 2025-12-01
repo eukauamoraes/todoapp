@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActionSheetController, AlertController, ToastController } from '@ionic/angular';
+import { Icon } from 'ionicons/dist/types/components/icon/icon';
 import { from } from 'rxjs';
 
 @Component({
@@ -75,10 +76,20 @@ export class HomePage {
               tarefa.feito=!tarefa.feito;
               this.atualizaLocalStorage
             }
+          },
+          {
+          text:'Cancelar',
+          icon:'close',
+          role'cancel',
+          handler:()=>{}
           }
         ]
-        
     });
-    actsheet.present()
+    actsheet.present(){}
+    {
+      excluir(tarefa:any)
+        this.tarefas = this.filter(res => tarefa !=res);
+        this.atualizaLocalStorage();
+    }
     }
   }
