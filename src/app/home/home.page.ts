@@ -11,6 +11,7 @@ import { from } from 'rxjs';
 })
 export class HomePage {
   tarefas: any[]=[]; // array tarefas(nome,feito(verdadeiro/false))
+i: any;
   
   constructor(private alertCtrl: AlertController, private toast:ToastController, private actionSheetCtrl: ActionSheetController ) {
     let tarefasJson =  localStorage.getItem('tarefaDb');
@@ -74,22 +75,22 @@ export class HomePage {
             icon:tarefa.feito?'radio-button-off':'checkmark-circle',
             handler:()=>{
               tarefa.feito=!tarefa.feito;
-              this.atualizaLocalStorage
+              this.atualizaLocalStorage();
             }
           },
           {
           text:'Cancelar',
           icon:'close',
-          role'cancel',
+          role:'cancel',
           handler:()=>{}
           }
         ]
     });
-    actsheet.present(){}
-    {
-      excluir(tarefa:any)
-        this.tarefas = this.filter(res => tarefa !=res);
+    actsheet.present()
+    }
+      excluir(tarefa:any){
+        this.tarefas = this.tarefas.filter(res => tarefa !=res);
         this.atualizaLocalStorage();
-    }
-    }
+
+  }
   }
